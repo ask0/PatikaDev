@@ -9,7 +9,7 @@ SELECT country FROM country WHERE country ~~ 'A%a'
 2) country tablosunda bulunan country sütunundaki ülke isimlerinden en az 6 karakterden oluşan ve sonu 'n' karakteri ile sonlananları sıralayınız.
 
 ~~~sql
-SELECT country FROM country WHERE country LIKE '%_____n'
+SELECT country FROM country WHERE country LIKE '_____%n'
 ~~~
 
 3) film tablosunda bulunan title sütunundaki film isimlerinden en az 4 adet büyük ya da küçük harf farketmesizin 'T' karakteri içeren film isimlerini sıralayınız.
