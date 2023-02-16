@@ -4,91 +4,55 @@ import java.util.*;
 
 public class Fixture {
     public void run() {
-        System.out.print("Enter team count: ");
-        Scanner scanner = new Scanner(System.in);
-        int teamCount = scanner.nextInt();
         LinkedList<String> teams = new LinkedList<>();
-        for (int i = 0; i < teamCount; i++) {
+
+//        teams.add("Fenerbahçe");
+//        teams.add("Galatasaray");
+//        teams.add("Beşiktaş");
+//        teams.add("Başakşehir");
+//        teams.add("Bursaspor");
+//        teams.add("Trabzonspor");
+//        teams.add("Antalyaspor");
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter team count: ");
+        int teamCount = scanner.nextInt();
+        while (teamCount-- != 0) {
             System.out.print("Enter team name: ");
             teams.add(scanner.next());
-        }
-
-        for (String i : teams) {
-            System.out.print(i + " ");
         }
 
         if (teams.size() % 2 == 1) {
             teams.add("Bay");
         }
+
+        int rounds = teams.size() - 1;
+        int matchesPerRound = teams.size() / 2;
         LinkedList<String> homeT = new LinkedList<>();
         LinkedList<String> awayT = new LinkedList<>();
-        LinkedList<String> cloneList = new LinkedList<>();
-        int counter = 1;
-        boolean afterFirstWeek = false;
-        boolean t = false;
-        for (int i = 0; i < teams.size() - 1; i++) {
-            String homeTeam;
-            String awayTeam;
-            int matchCount = 0;
-            String weeksMatches = "";
 
-            cloneList = (LinkedList<String>) teams.clone(); // refresh teams each week
-
-            while (matchCount < teams.size() / 2) {
-                boolean isContinue = true;
-                if (afterFirstWeek) {
-                    Collections.shuffle(cloneList);
-                    homeTeam = cloneList.peek();
-                    cloneList.removeFirst();
-                    awayTeam = cloneList.peek();
-                    cloneList.removeFirst();
-
-                    for (int j = 0; j < homeT.size(); j++) {
-                        if ((homeTeam.equals(homeT.get(j)) && awayTeam.equals(awayT.get(j))) || (awayTeam.equals(awayT.get(j)) && homeTeam.equals(homeT.get(j)))) {
-                            isContinue = false;
-                        }
-                        if (homeTeam.equals(awayT.get(j)) && awayTeam.equals(homeT.get(j))) {
-                            isContinue = false;
-                        }
-                    }
-
-                    if (isContinue) {
-                        homeT.add(homeTeam);
-                        awayT.add(awayTeam);
-                        weeksMatches += homeTeam + " vs " + awayTeam + "\n";
-                        matchCount++;
-                        counter++;
-                    } else {
-                        Collections.shuffle(cloneList);
-                        cloneList.add(homeTeam);
-                        cloneList.add(awayTeam);
-                        Collections.shuffle(cloneList);
-                    }
-                } else {
-                    Collections.shuffle(cloneList);
-                    homeTeam = cloneList.peek();
-                    cloneList.removeFirst();
-                    awayTeam = cloneList.peek();
-                    cloneList.removeFirst();
-
-                    homeT.add(homeTeam);
-                    awayT.add(awayTeam);
-                    weeksMatches += homeTeam + " vs " + awayTeam + "\n";
-                    matchCount++;
-                    counter++;
-
-                }
-                if (!afterFirstWeek && (matchCount == teams.size() / 2))
-                    afterFirstWeek = true;
+        for (int i = 0; i < rounds; i++) {
+            for (int j = 0; j < matchesPerRound; j++) {
+                int home = j;
+                int away = teams.size() - 1 - j;
+                homeT.add(teams.get(home));
+                awayT.add(teams.get(away));
             }
-            System.out.println();
-            System.out.println(i + 1 + ". week matches");
-            System.out.println(weeksMatches);
+            teams.add(1, teams.removeLast());
         }
 
-        for (int i = 0; i < counter; i++) {
-
+        int week = 1;
+        for (int i = 0; i < homeT.size(); i++) {
+            if (i % matchesPerRound == 0)
+                System.out.println("\n## Week " + week++);
+            System.out.println(homeT.get(i) + " vs " + awayT.get(i));
         }
+        for (int i = 0; i < awayT.size(); i++) {
+            if (i % matchesPerRound == 0)
+                System.out.println("\n## Week " + week++);
+            System.out.println(awayT.get(i) + " vs " + homeT.get(i));
+        }
+
     }
 
 
