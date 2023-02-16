@@ -16,13 +16,17 @@ public class Fixture {
         for (String i : teams) {
             System.out.print(i + " ");
         }
+
+        if (teams.size() % 2 == 1) {
+            teams.add("Bay");
+        }
         LinkedList<String> homeT = new LinkedList<>();
         LinkedList<String> awayT = new LinkedList<>();
         LinkedList<String> cloneList = new LinkedList<>();
         int counter = 1;
         boolean afterFirstWeek = false;
         boolean t = false;
-        for (int i = 0; i < teamCount - 1; i++) {
+        for (int i = 0; i < teams.size() - 1; i++) {
             String homeTeam;
             String awayTeam;
             int matchCount = 0;
@@ -30,7 +34,7 @@ public class Fixture {
 
             cloneList = (LinkedList<String>) teams.clone(); // refresh teams each week
 
-            while (matchCount < teamCount / 2) {
+            while (matchCount < teams.size() / 2) {
                 boolean isContinue = true;
                 if (afterFirstWeek) {
                     Collections.shuffle(cloneList);
@@ -40,7 +44,7 @@ public class Fixture {
                     cloneList.removeFirst();
 
                     for (int j = 0; j < homeT.size(); j++) {
-                        if (homeTeam.equals(homeT.get(j)) && awayTeam.equals(awayT.get(j)) || awayTeam.equals(awayT.get(j)) && homeTeam.equals(homeT.get(j))) {
+                        if ((homeTeam.equals(homeT.get(j)) && awayTeam.equals(awayT.get(j))) || (awayTeam.equals(awayT.get(j)) && homeTeam.equals(homeT.get(j)))) {
                             isContinue = false;
                         }
                         if (homeTeam.equals(awayT.get(j)) && awayTeam.equals(homeT.get(j))) {
@@ -55,8 +59,10 @@ public class Fixture {
                         matchCount++;
                         counter++;
                     } else {
+                        Collections.shuffle(cloneList);
                         cloneList.add(homeTeam);
                         cloneList.add(awayTeam);
+                        Collections.shuffle(cloneList);
                     }
                 } else {
                     Collections.shuffle(cloneList);
@@ -72,7 +78,7 @@ public class Fixture {
                     counter++;
 
                 }
-                if (!afterFirstWeek && matchCount == teamCount / 2)
+                if (!afterFirstWeek && (matchCount == teams.size() / 2))
                     afterFirstWeek = true;
             }
             System.out.println();
