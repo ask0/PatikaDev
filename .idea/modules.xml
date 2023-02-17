@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Java102/Java102.iml" filepath="$PROJECT_DIR$/Java102/Java102.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/PatikaDev.iml" filepath="$PROJECT_DIR$/.idea/PatikaDev.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PolicyManagement/PolicyManagement.iml" filepath="$PROJECT_DIR$/PolicyManagement/PolicyManagement.iml" />
     </modules>
   </component>
 </project>
