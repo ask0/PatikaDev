@@ -7,6 +7,6 @@ Book sınıfından 10 tane nesne üretip bunu bir ArrayList yapısında saklayı
 
 
 
-Bu 10 elemanlık Book listesinden sayfa sayısı 100'den fazla olan kitapları filtreleyen ve yeni bir liste olarak verecek geliştirmeyi yapınız. (Stream ve Lambda ifadeleri kullanabilirsiniz.)
+Bu 10 elemanlık Book listesinden sayfa sayısı 400'den fazla olan kitapları filtreleyen ve yeni bir liste olarak verecek geliştirmeyi yapınız. (Stream ve Lambda ifadeleri kullanabilirsiniz.)
 
 ```
