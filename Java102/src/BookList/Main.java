@@ -21,14 +21,16 @@ public class Main {
         Map<String, String> bookMap = books.stream().collect(Collectors.toMap(Book::getTitle, Book::getAuthor));
         bookMap.forEach((k, v) -> System.out.println(k + " by " + v));
 
-        System.out.println("***");
-
         System.out.println("Books more than 400 pages:");
         books.forEach(book -> {
             if (book.getPages() > 400) {
                 System.out.println(book.getTitle() + " " + book.getPages());
             }
         });
+
+        System.out.println("Books more than 400 pages using stream:");
+        books.stream().filter(book -> book.getPages() > 400).forEach(book -> System.out.println(book.getTitle() + " " + book.getPages()));
+
 
     }
 }
