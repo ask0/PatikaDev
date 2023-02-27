@@ -13,3 +13,5 @@ First Web PageYaptığınız sayfa üstteki gibi bir yapıda olabilir.
 Bunun haricinde bolca deneme yapmayı, yanlışlar yapıp bunları düzeltmekten çekinmeyin. Unutmayın, doğrular yanlışlar yapılarak bulunur.
 
 Hepinize başarılar ve kolay gelsin!
+
+![icerik](https://i.hizliresim.com/ob2ldcu.png)
