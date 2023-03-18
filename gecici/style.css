@@ -1,0 +1,15 @@
+.card-custom {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-img-custom {
+  height: 200px;
+  width: 200px;
+}
+
+.card-footer {
+  border-top: none;
+}
